@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Todo List Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #todoapp {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 300px;
+            margin: auto;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Todo List Application</h1>
+    </header>
+    <main>
+        <section id="todoapp">
+            <form id="todoForm">
+                <input type="text" id="todoInput" placeholder="Enter new item">
+                <button type="submit">Add Item</button>
+            </form>
+            <ul id="todoList">
+                <!-- List items will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+    <script>
+        // JavaScript code to add items to the list dynamically
+        document.getElementById('todoForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the value from the input field
+            var todoInput = document.getElementById('todoInput');
+            var newItemText = todoInput.value.trim();
+
+            // Check if the input field is not empty
+            if (newItemText !== '') {
+                // Create a new list item
+                var newItem = document.createElement('li');
+                newItem.textContent = newItemText;
+
+                // Append the new item to the todoList
+                var todoList = document.getElementById('todoList');
+                todoList.appendChild(newItem);
+
+                // Clear the input field
+                todoInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
